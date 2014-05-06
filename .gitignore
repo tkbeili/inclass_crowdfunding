@@ -16,3 +16,5 @@
 /tmp
 
 /config/database.yml
+/config/initializers/keys_for_stripe.rb
+

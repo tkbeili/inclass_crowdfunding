@@ -1,12 +1,38 @@
 Rails.application.routes.draw do
 
+  resources :reward_levels, only: [] do
+    resources :orders
+  end
+
+  # get 'nearby_campaigns/index'
+  resources :nearby_campaigns, only: :index
+
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :campaigns
+    end
+    # scope module: :v1 do
+    #   resources :campaigns
+    # end
+  end
+
+
+  resources :discussions do
+    resources :comments
+  end
+
+  resources :campaigns do
+    resources :comments
+    patch :publish, on: :member
+  end
+
   get    "signup" => "users#new",        as: :signup
   get    "login"  => "sessions#new",     as: :login
   delete "logout" => "sessions#destroy", as: :logout 
 
   resources :users
   resources :sessions
-
 
   root "welcome#index"
 

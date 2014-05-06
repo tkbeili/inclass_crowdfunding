@@ -5,7 +5,7 @@
         %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} &#215;
         %h4#myModalLabel.modal-title Sign In
       .modal-body
-        = flash_messages if flash[:alert]
+        = flash_messages if flash[:alert] 
         = f.input :email
         = f.input :password
       .modal-footer

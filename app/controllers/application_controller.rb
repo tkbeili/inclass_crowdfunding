@@ -5,7 +5,14 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
+  after_action :set_access_controller_headers
+
   private
+
+  def set_access_controller_headers
+    headers['Access-Control-Allow-Origin']   = '*'
+    headers['Access-Control-Request-Method'] = '*'
+  end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

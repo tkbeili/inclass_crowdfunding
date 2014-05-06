@@ -1,2 +1,7 @@
-%h1= t "greetings.hello"
-%p Find me in app/views/welcome/index.html.haml
+%h1 Welcome to Fund.sy
+= link_to "New Campaign", new_campaign_path, class: "btn btn-primary"
+
+
+#campaign-view.modal.fade
+
+#campaigns= render "campaigns_with_pagination"

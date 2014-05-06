@@ -1,0 +1,18 @@
+.col-md-9.col-sm-9
+  %h1= @commentable.title
+  %p= @commentable.details
+  %div{class: @commentable.label_class}
+    = @commentable.state
+  %p=# formatted_date(@commentable.created_at)
+  %p= @commentable.created_at
+  %hr
+
+
+  = render "/comments/listing_with_new"
+
+.col-md-3.col-sm-3
+  - @campaign.reward_levels.each do |reward_level|
+    .well
+      %h4= reward_level.title
+      %h5 $ #{reward_level.amount}
+      %p= reward_level.details
