@@ -7,7 +7,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-
+    service = Order::CreateOrder.new(user: current_user,
+                                    stripe_token: params[:order][:stripe_card_token],
+                                    reward_level: @reward_level)
+    if service.call
+      redirect_to @reward_level.campaign, notice: "Thanks for pledging"
+    else
+      @order = service.order
+      render :new
+    end
   end
 
   private

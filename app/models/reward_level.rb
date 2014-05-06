@@ -6,3 +6,4 @@ class RewardLevel < ActiveRecord::Base
   delegate :title, to: :campaign, prefix: true
 
 end
+
